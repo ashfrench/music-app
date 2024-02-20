@@ -19,8 +19,8 @@ class GlobalLibraryEndpoints {
         TODO()
     }
 
-    @GetMapping("/artist/{id}")
-    fun getArtist(@PathVariable id: UUID): Artist {
+    @GetMapping("/artist/{artistId}")
+    fun getArtist(@PathVariable artistId: UUID): Artist {
         TODO()
     }
 
@@ -29,8 +29,8 @@ class GlobalLibraryEndpoints {
         TODO()
     }
 
-    @GetMapping("/track/{id}")
-    fun getTrack(@PathVariable id: UUID): Track {
+    @GetMapping("/track/{trackId}")
+    fun getTrack(@PathVariable trackId: UUID): Track {
         TODO()
     }
 
@@ -39,8 +39,8 @@ class GlobalLibraryEndpoints {
         TODO()
     }
 
-    @GetMapping("/album/{id}")
-    fun getAlbum(@PathVariable id: UUID): Album {
+    @GetMapping("/album/{albumId}")
+    fun getAlbum(@PathVariable albumId: UUID): Album {
         TODO()
     }
 
@@ -49,8 +49,8 @@ class GlobalLibraryEndpoints {
         TODO()
     }
 
-    @GetMapping("/playlist/{id}")
-    fun getPlaylist(@PathVariable id: UUID): Playlist {
+    @GetMapping("/playlist/{playlistId}")
+    fun getPlaylist(@PathVariable playlistId: UUID): Playlist {
         TODO()
     }
 }

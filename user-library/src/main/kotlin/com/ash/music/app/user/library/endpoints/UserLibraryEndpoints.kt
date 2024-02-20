@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.*
 
 @RestController
-@RequestMapping("library/{userId}")
+@RequestMapping("user/{userId}")
 class UserLibraryEndpoints {
 
     @GetMapping
@@ -19,8 +19,8 @@ class UserLibraryEndpoints {
         TODO()
     }
 
-    @GetMapping("/artist/{id}")
-    fun getArtist(@PathVariable userId: UUID, @PathVariable id: UUID): Artist {
+    @GetMapping("/artist/{artistId}")
+    fun getArtist(@PathVariable userId: UUID, @PathVariable artistId: UUID): Artist {
         TODO()
     }
 
@@ -29,8 +29,8 @@ class UserLibraryEndpoints {
         TODO()
     }
 
-    @GetMapping("/track/{id}")
-    fun getTrack(@PathVariable userId: UUID, @PathVariable id: UUID): Track {
+    @GetMapping("/track/{trackId}")
+    fun getTrack(@PathVariable userId: UUID, @PathVariable trackId: UUID): Track {
         TODO()
     }
 
@@ -39,8 +39,8 @@ class UserLibraryEndpoints {
         TODO()
     }
 
-    @GetMapping("/album/{id}")
-    fun getAlbum(@PathVariable userId: UUID, @PathVariable id: UUID): Album {
+    @GetMapping("/album/{albumId}")
+    fun getAlbum(@PathVariable userId: UUID, @PathVariable albumId: UUID): Album {
         TODO()
     }
 
@@ -49,8 +49,8 @@ class UserLibraryEndpoints {
         TODO()
     }
 
-    @GetMapping("/playlist/{id}")
-    fun getPlaylist(@PathVariable userId: UUID, @PathVariable id: UUID): Playlist {
+    @GetMapping("/playlist/{playlistId}")
+    fun getPlaylist(@PathVariable userId: UUID, @PathVariable playlistId: UUID): Playlist {
         TODO()
     }
 }
