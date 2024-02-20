@@ -1,0 +1,23 @@
+--Project structure
+
+data-model
+
+audio-streaming
+image-service
+meta-data-service
+
+admin-service
+payment-service
+registration-service
+
+global-search
+global-library
+global-playlist
+
+user-library
+user-playlist
+user-playqueue
+
+web-app
+
+mobile-app
