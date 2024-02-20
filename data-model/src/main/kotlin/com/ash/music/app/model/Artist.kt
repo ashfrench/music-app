@@ -10,12 +10,12 @@ sealed class Artist(
 data class SoloArtist(
     override val artistID: ArtistId,
     override val artistName: String
-): Artist(artistID, artistName)
+) : Artist(artistID, artistName)
 
 data class GroupArtist(
     override val artistID: ArtistId,
     override val artistName: String,
     val artists: List<Artist>
-): Artist(artistID, artistName)
+) : Artist(artistID, artistName)
 
 typealias ArtistId = UUID

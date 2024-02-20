@@ -15,7 +15,7 @@ import java.util.*
 class UserLibraryEndpoints {
 
     @GetMapping
-    fun getArtists(@PathVariable userId: UUID): Artist{
+    fun getArtists(@PathVariable userId: UUID): Artist {
         TODO()
     }
 
