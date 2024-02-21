@@ -5,8 +5,9 @@ import java.util.UUID
 typealias ArtistId = UUID
 typealias TrackId = UUID
 typealias PlaylistId = UUID
+typealias UserId = UUID
 typealias AlbumId = UUID
-typealias TrackList = List<Track>
+typealias TrackList = List<ITrack>
 
 fun newArtistId(): UUID = UUID.randomUUID()
 fun newAlbumId(): UUID = UUID.randomUUID()
