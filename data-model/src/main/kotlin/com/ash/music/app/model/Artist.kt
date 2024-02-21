@@ -1,10 +1,17 @@
 package com.ash.music.app.model
 
-import java.util.UUID
+interface Artist {
+    val artistId: ArtistId
+    val artistName: String
+}
 
-data class Artist(
-    open val artistID: ArtistId,
-    open val artistName: String
-)
+data class SoloArtist(
+    override val artistId: ArtistId = newArtistId(),
+    override val artistName: String
+): Artist
 
-typealias ArtistId = UUID
+data class GroupArtist(
+    override val artistId: ArtistId = newArtistId(),
+    override val artistName: String,
+    val members: List<Artist>
+): Artist
