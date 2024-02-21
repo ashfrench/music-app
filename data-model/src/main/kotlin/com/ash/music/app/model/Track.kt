@@ -3,5 +3,9 @@ package com.ash.music.app.model
 import java.util.UUID
 
 data class Track(
-    val songID: UUID
+    val trackId: TrackId,
+    val albumId: AlbumId,
+    val artistId: ArtistId
 )
+
+typealias TrackId = UUID
