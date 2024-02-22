@@ -16,25 +16,25 @@ class UserTrackEndpoints {
 
     @PutMapping("/like")
     fun likeTrack(userId: UserId, trackId: TrackId) {
-        logger.info("User: $userId Liked Track $trackId")
+        logger.info("User: [$userId] Liked Track [$trackId]")
         TODO()
     }
 
     @DeleteMapping("/like")
     fun removeLikeTrack(userId: UserId, trackId: TrackId) {
-        logger.info("User: $userId Removed Liked Track $trackId")
+        logger.info("User: [$userId] Removed Liked Track [$trackId]")
         TODO()
     }
 
     @PutMapping("/dislike")
     fun dislikeTrack(userId: UserId, trackId: TrackId) {
-        logger.info("User: $userId Disliked Track $trackId")
+        logger.info("User: [$userId] Disliked Track [$trackId]")
         TODO()
     }
 
     @DeleteMapping("/dislike")
     fun removeDislikeTrack(userId: UserId, trackId: TrackId) {
-        logger.info("User: $userId Removed Disliked Track $trackId")
+        logger.info("User: [$userId] Removed Disliked Track [$trackId]")
         TODO()
     }
 }
