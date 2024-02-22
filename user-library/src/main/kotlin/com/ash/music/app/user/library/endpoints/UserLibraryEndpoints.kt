@@ -4,6 +4,7 @@ import com.ash.music.app.model.IAlbum
 import com.ash.music.app.model.Artist
 import com.ash.music.app.model.Playlist
 import com.ash.music.app.model.ITrack
+import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -13,6 +14,8 @@ import java.util.*
 @RestController
 @RequestMapping("user/{userId}")
 class UserLibraryEndpoints {
+
+    private val logger = LoggerFactory.getLogger(UserLibraryEndpoints::class.java)
 
     @GetMapping
     fun getArtists(@PathVariable userId: UUID): Artist {
