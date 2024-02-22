@@ -1,1 +1,3 @@
-'./gradlew build'
+## To Build
+
+`./gradlew build`
