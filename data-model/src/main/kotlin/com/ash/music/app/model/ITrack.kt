@@ -20,5 +20,6 @@ data class UserTrack(
     override val trackName: String,
     override val albumId: AlbumId,
     override val artistId: ArtistId,
-    val liked: Boolean
+    val like: Boolean,
+    val dislike: Boolean
 ): ITrack
