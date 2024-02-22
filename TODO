@@ -21,3 +21,8 @@ user-playqueue
 web-app
 
 mobile-app
+
+--Dockerize
+    might require stand alone DB project just for a DB to run
+--Postman Scripts
+    useful for testing when standing everything up
