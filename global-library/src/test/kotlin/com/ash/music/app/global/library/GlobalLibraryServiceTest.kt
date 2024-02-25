@@ -2,6 +2,7 @@ package com.ash.music.app.global.library
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
@@ -11,6 +12,8 @@ import kotlin.test.assertNotNull
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class GlobalLibraryServiceTest(@Autowired val restTemplate: TestRestTemplate) {
+
+    private val logger = LoggerFactory.getLogger(GlobalLibraryServiceTest::class.java)
 
     @Test
     fun contextLoads() {
@@ -22,6 +25,7 @@ class GlobalLibraryServiceTest(@Autowired val restTemplate: TestRestTemplate) {
         assertThat(swaggerPage.statusCode).isEqualTo(HttpStatus.OK)
         assertThat(swaggerPage.hasBody()).isTrue()
         assertNotNull(swaggerPage.body)
+        logger.info(swaggerPage.body)
     }
 
     @Test
@@ -30,6 +34,7 @@ class GlobalLibraryServiceTest(@Autowired val restTemplate: TestRestTemplate) {
         assertThat(apiDocsPage.statusCode).isEqualTo(HttpStatus.OK)
         assertThat(apiDocsPage.hasBody()).isTrue()
         assertNotNull(apiDocsPage.body)
+        logger.info(apiDocsPage.body)
     }
 
 }

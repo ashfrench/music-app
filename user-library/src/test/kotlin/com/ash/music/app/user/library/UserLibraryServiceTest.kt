@@ -1,7 +1,8 @@
 package com.ash.music.app.user.library
 
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
@@ -12,6 +13,8 @@ import kotlin.test.assertNotNull
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class UserLibraryServiceTest(@Autowired val restTemplate: TestRestTemplate) {
 
+    private val logger = LoggerFactory.getLogger(UserLibraryServiceTest::class.java)
+
     @Test
     fun contextLoads() {
     }
@@ -19,17 +22,19 @@ class UserLibraryServiceTest(@Autowired val restTemplate: TestRestTemplate) {
     @Test
     fun testSwagger() {
         val swaggerPage = restTemplate.getForEntity<String>("/swagger-ui/index.html")
-        Assertions.assertThat(swaggerPage.statusCode).isEqualTo(HttpStatus.OK)
-        Assertions.assertThat(swaggerPage.hasBody()).isTrue()
+        assertThat(swaggerPage.statusCode).isEqualTo(HttpStatus.OK)
+        assertThat(swaggerPage.hasBody()).isTrue()
         assertNotNull(swaggerPage.body)
+        logger.info(swaggerPage.body)
     }
 
     @Test
     fun testApiDocs() {
         val apiDocsPage = restTemplate.getForEntity<String>("/v3/api-docs")
-        Assertions.assertThat(apiDocsPage.statusCode).isEqualTo(HttpStatus.OK)
-        Assertions.assertThat(apiDocsPage.hasBody()).isTrue()
+        assertThat(apiDocsPage.statusCode).isEqualTo(HttpStatus.OK)
+        assertThat(apiDocsPage.hasBody()).isTrue()
         assertNotNull(apiDocsPage.body)
+        logger.info(apiDocsPage.body)
     }
 
 
