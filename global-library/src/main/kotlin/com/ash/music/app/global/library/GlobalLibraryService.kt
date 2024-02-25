@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class MusicAppApplication
+class GlobalLibraryService
 
 fun main(args: Array<String>) {
-    runApplication<MusicAppApplication>(*args)
+    runApplication<GlobalLibraryService>(*args)
 }

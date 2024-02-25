@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class UserLibraryApplication
+class UserLibraryService
 
 fun main(args: Array<String>) {
-    runApplication<UserLibraryApplication>(*args)
+    runApplication<UserLibraryService>(*args)
 }
