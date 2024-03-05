@@ -1,9 +1,6 @@
 package com.ash.music.app.user.library.endpoints
 
-import com.ash.music.app.model.IAlbum
-import com.ash.music.app.model.Artist
-import com.ash.music.app.model.Playlist
-import com.ash.music.app.model.ITrack
+import com.ash.music.app.model.*
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -33,17 +30,17 @@ class UserLibraryEndpoints {
     }
 
     @GetMapping("/track/{trackId}")
-    fun getTrack(@PathVariable userId: UUID, @PathVariable trackId: UUID): ITrack {
+    fun getTrack(@PathVariable userId: UUID, @PathVariable trackId: UUID): UserTrack {
         TODO()
     }
 
     @GetMapping("/album")
-    fun getAlbums(@PathVariable userId: UUID): List<IAlbum> {
+    fun getAlbums(@PathVariable userId: UUID): List<UserAlbum> {
         TODO()
     }
 
     @GetMapping("/album/{albumId}")
-    fun getAlbum(@PathVariable userId: UUID, @PathVariable albumId: UUID): IAlbum {
+    fun getAlbum(@PathVariable userId: UUID, @PathVariable albumId: UUID): UserAlbum {
         TODO()
     }
 
