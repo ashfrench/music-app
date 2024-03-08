@@ -1,8 +1,6 @@
 package com.ash.music.app.model
 
-sealed interface IAlbumDetails {
-
-}
+sealed interface IAlbumDetails
 
 data object NoDetails: IAlbumDetails
 data class AlbumDetails(

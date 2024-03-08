@@ -15,12 +15,12 @@ class UserLibraryEndpoints {
     private val logger = LoggerFactory.getLogger(UserLibraryEndpoints::class.java)
 
     @GetMapping
-    fun getArtists(@PathVariable userId: UUID): Artist {
+    fun getArtists(@PathVariable userId: UUID): IArtist {
         TODO()
     }
 
     @GetMapping("/artist/{artistId}")
-    fun getArtist(@PathVariable userId: UUID, @PathVariable artistId: UUID): Artist {
+    fun getArtist(@PathVariable userId: UUID, @PathVariable artistId: UUID): IArtist {
         TODO()
     }
 

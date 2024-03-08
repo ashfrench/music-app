@@ -1,7 +1,7 @@
 package com.ash.music.app.global.library.endpoints
 
 import com.ash.music.app.model.IAlbum
-import com.ash.music.app.model.Artist
+import com.ash.music.app.model.IArtist
 import com.ash.music.app.model.Playlist
 import com.ash.music.app.model.ITrack
 import org.springframework.web.bind.annotation.GetMapping
@@ -15,12 +15,12 @@ import java.util.*
 class GlobalLibraryEndpoints {
 
     @GetMapping("/artist")
-    fun getArtists(): List<Artist> {
+    fun getArtists(): List<IArtist> {
         TODO()
     }
 
     @GetMapping("/artist/{artistId}")
-    fun getArtist(@PathVariable artistId: UUID): Artist {
+    fun getArtist(@PathVariable artistId: UUID): IArtist {
         TODO()
     }
 
