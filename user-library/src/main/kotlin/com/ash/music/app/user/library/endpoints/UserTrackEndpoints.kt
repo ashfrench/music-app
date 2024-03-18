@@ -2,19 +2,20 @@ package com.ash.music.app.user.library.endpoints
 
 import com.ash.music.app.model.TrackId
 import com.ash.music.app.model.UserId
+import com.ash.music.app.user.library.persistence.UserLibraryPersistence
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("user/{userId}/track/{trackId}")
-class UserTrackEndpoints {
+class UserTrackEndpoints(private val userLibraryPersistence: UserLibraryPersistence) {
 
     private val logger = LoggerFactory.getLogger(UserTrackEndpoints::class.java)
 
     @PutMapping("/like")
     fun likeTrack(@PathVariable userId: UserId, @PathVariable trackId: TrackId) {
         logger.info("User: [$userId] Liked Track [$trackId]")
-        TODO()
+        userLibraryPersistence.likeTrack(userId, trackId)
     }
 
     @DeleteMapping("/like")
