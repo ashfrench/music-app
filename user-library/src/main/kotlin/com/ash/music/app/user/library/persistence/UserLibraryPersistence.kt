@@ -9,4 +9,16 @@ class UserLibraryPersistence {
     fun likeTrack(userId: UserId, trackId: TrackId) {
         TODO("Not yet implemented")
     }
+
+    fun removeLikeTrack(userId: UserId, trackId: TrackId) {
+        TODO("Not yet implemented")
+    }
+
+    fun dislikeTrack(userId: UserId, trackId: TrackId) {
+        TODO("Not yet implemented")
+    }
+
+    fun removeDislikeTrack(userId: UserId, trackId: TrackId) {
+        TODO("Not yet implemented")
+    }
 }

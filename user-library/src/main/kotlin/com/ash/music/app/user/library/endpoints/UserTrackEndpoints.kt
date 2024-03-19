@@ -21,18 +21,18 @@ class UserTrackEndpoints(private val userLibraryPersistence: UserLibraryPersiste
     @DeleteMapping("/like")
     fun removeLikeTrack(@PathVariable userId: UserId, @PathVariable trackId: TrackId) {
         logger.info("User: [$userId] Removed Liked Track [$trackId]")
-        TODO()
+        userLibraryPersistence.removeLikeTrack(userId, trackId)
     }
 
     @PutMapping("/dislike")
     fun dislikeTrack(@PathVariable userId: UserId, @PathVariable trackId: TrackId) {
         logger.info("User: [$userId] Disliked Track [$trackId]")
-        TODO()
+        userLibraryPersistence.dislikeTrack(userId, trackId)
     }
 
     @DeleteMapping("/dislike")
     fun removeDislikeTrack(@PathVariable userId: UserId, @PathVariable trackId: TrackId) {
         logger.info("User: [$userId] Removed Disliked Track [$trackId]")
-        TODO()
+        userLibraryPersistence.removeDislikeTrack(userId, trackId)
     }
 }
