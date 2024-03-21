@@ -19,14 +19,29 @@ class UserLibraryPersistence(
     }
 
     fun removeLikeTrack(userId: UserId, trackId: TrackId) {
-        TODO("Not yet implemented")
+        databaseClient.sql("INSERT INTO TABLE ....")
+            .bind("userId", userId)
+            .bind("trackId", trackId)
+            .then().doOnError {
+                throw it
+            }
     }
 
     fun dislikeTrack(userId: UserId, trackId: TrackId) {
-        TODO("Not yet implemented")
+        databaseClient.sql("INSERT INTO TABLE ....")
+            .bind("userId", userId)
+            .bind("trackId", trackId)
+            .then().doOnError {
+                throw it
+            }
     }
 
     fun removeDislikeTrack(userId: UserId, trackId: TrackId) {
-        TODO("Not yet implemented")
+        databaseClient.sql("INSERT INTO TABLE ....")
+            .bind("userId", userId)
+            .bind("trackId", trackId)
+            .then().doOnError {
+                throw it
+            }
     }
 }
