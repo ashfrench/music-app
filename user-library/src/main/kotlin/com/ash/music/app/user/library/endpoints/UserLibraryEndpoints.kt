@@ -1,6 +1,8 @@
 package com.ash.music.app.user.library.endpoints
 
 import com.ash.music.app.model.*
+import com.ash.music.app.user.library.persistence.UserAlbumPersistence
+import com.ash.music.app.user.library.persistence.UserTrackPersistence
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -10,47 +12,49 @@ import java.util.*
 
 @RestController
 @RequestMapping("user/{userId}")
-class UserLibraryEndpoints {
+class UserLibraryEndpoints(
+    private val userAlbumPersistence: UserAlbumPersistence
+) {
 
     private val logger = LoggerFactory.getLogger(UserLibraryEndpoints::class.java)
 
     @GetMapping
-    fun getArtists(@PathVariable userId: UUID): IArtist {
+    fun getArtists(@PathVariable userId: UserId): IArtist {
         TODO()
     }
 
     @GetMapping("/artist/{artistId}")
-    fun getArtist(@PathVariable userId: UUID, @PathVariable artistId: UUID): IArtist {
+    fun getArtist(@PathVariable userId: UserId, @PathVariable artistId: ArtistId): IArtist {
         TODO()
     }
 
     @GetMapping("/track")
-    fun getTracks(@PathVariable userId: UUID): List<ITrack> {
+    fun getTracks(@PathVariable userId: UserId): List<ITrack> {
         TODO()
     }
 
     @GetMapping("/track/{trackId}")
-    fun getTrack(@PathVariable userId: UUID, @PathVariable trackId: UUID): UserTrack {
+    fun getTrack(@PathVariable userId: UserId, @PathVariable trackId: TrackId): UserTrack {
         TODO()
     }
 
     @GetMapping("/album")
-    fun getAlbums(@PathVariable userId: UUID): List<UserAlbum> {
-        TODO()
+    fun getAlbums(@PathVariable userId: UserId): List<UserAlbum> {
+        return userAlbumPersistence.getAlbums(userId)
     }
 
     @GetMapping("/album/{albumId}")
-    fun getAlbum(@PathVariable userId: UUID, @PathVariable albumId: UUID): UserAlbum {
-        TODO()
+    fun getAlbum(@PathVariable userId: UserId, @PathVariable albumId: AlbumId): UserAlbum {
+        return userAlbumPersistence.getAlbum(userId, albumId)
     }
 
     @GetMapping("/playlist")
-    fun getPlaylists(@PathVariable userId: UUID): List<Playlist> {
+    fun getPlaylists(@PathVariable userId: UserId): List<Playlist> {
         TODO()
     }
 
     @GetMapping("/playlist/{playlistId}")
-    fun getPlaylist(@PathVariable userId: UUID, @PathVariable playlistId: UUID): Playlist {
+    fun getPlaylist(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId): Playlist {
         TODO()
     }
 }
