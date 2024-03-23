@@ -16,21 +16,25 @@ class UserAlbumEndpoints(
 
     @PutMapping("/like")
     fun likeAlbum(@PathVariable userId: UserId, @PathVariable albumId: AlbumId) {
-        TODO()
+        logger.info("User: [$userId] Liked Album [$albumId]")
+        userAlbumPersistence.likeAlbum(userId, albumId)
     }
 
     @DeleteMapping("/like")
     fun removeLikeAlbum(@PathVariable userId: UserId,@PathVariable albumId: AlbumId) {
-        TODO()
+        logger.info("User: [$userId] Removed Liked Album [$albumId]")
+        userAlbumPersistence.removeLikeAlbum(userId, albumId)
     }
 
     @PutMapping("/dislike")
     fun dislikeAlbum(@PathVariable userId: UserId,@PathVariable albumId: AlbumId) {
-        TODO()
+        logger.info("User: [$userId] Disliked Album [$albumId]")
+        userAlbumPersistence.dislikeAlbum(userId, albumId)
     }
 
     @DeleteMapping("/dislike")
     fun removeDislikeAlbum(@PathVariable userId: UserId,@PathVariable albumId: AlbumId) {
-        TODO()
+        logger.info("User: [$userId] Removed Disliked Album [$albumId]")
+        userAlbumPersistence.removeDislikeAlbum(userId, albumId)
     }
 }
