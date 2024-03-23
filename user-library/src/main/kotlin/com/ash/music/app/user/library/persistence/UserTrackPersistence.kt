@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component
 import org.springframework.r2dbc.core.DatabaseClient
 
 @Component
-class UserLibraryPersistence(
+class UserTrackPersistence(
     private val databaseClient: DatabaseClient
 ) {
     fun likeTrack(userId: UserId, trackId: TrackId) {
