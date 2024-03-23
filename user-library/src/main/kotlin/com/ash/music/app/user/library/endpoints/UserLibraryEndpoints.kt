@@ -13,7 +13,8 @@ import java.util.*
 @RestController
 @RequestMapping("user/{userId}")
 class UserLibraryEndpoints(
-    private val userAlbumPersistence: UserAlbumPersistence
+    private val userAlbumPersistence: UserAlbumPersistence,
+    private val userTrackPersistence: UserTrackPersistence
 ) {
 
     private val logger = LoggerFactory.getLogger(UserLibraryEndpoints::class.java)
@@ -29,13 +30,13 @@ class UserLibraryEndpoints(
     }
 
     @GetMapping("/track")
-    fun getTracks(@PathVariable userId: UserId): List<ITrack> {
-        TODO()
+    fun getTracks(@PathVariable userId: UserId): List<UserTrack> {
+        return userTrackPersistence.getTracks(userId)
     }
 
     @GetMapping("/track/{trackId}")
     fun getTrack(@PathVariable userId: UserId, @PathVariable trackId: TrackId): UserTrack {
-        TODO()
+        return userTrackPersistence.getTrack(userId, trackId)
     }
 
     @GetMapping("/album")

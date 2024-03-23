@@ -1,7 +1,9 @@
 package com.ash.music.app.user.library.persistence
 
+import com.ash.music.app.model.ITrack
 import com.ash.music.app.model.TrackId
 import com.ash.music.app.model.UserId
+import com.ash.music.app.model.UserTrack
 import org.springframework.stereotype.Component
 import org.springframework.r2dbc.core.DatabaseClient
 
@@ -43,5 +45,13 @@ class UserTrackPersistence(
             .then().doOnError {
                 throw it
             }
+    }
+
+    fun getTracks(userId: UserId): List<UserTrack> {
+        TODO("Not yet implemented")
+    }
+
+    fun getTrack(userId: UserId, trackId: TrackId): UserTrack {
+        TODO("Not yet implemented")
     }
 }
