@@ -1,11 +1,10 @@
 package com.ash.music.app.user.library.persistence
 
-import com.ash.music.app.model.ITrack
 import com.ash.music.app.model.TrackId
 import com.ash.music.app.model.UserId
 import com.ash.music.app.model.UserTrack
-import org.springframework.stereotype.Component
 import org.springframework.r2dbc.core.DatabaseClient
+import org.springframework.stereotype.Component
 
 @Component
 class UserTrackPersistence(
