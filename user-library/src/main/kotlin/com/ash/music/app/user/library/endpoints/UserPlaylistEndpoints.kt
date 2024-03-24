@@ -1,9 +1,6 @@
 package com.ash.music.app.user.library.endpoints
 
-import com.ash.music.app.model.PlaylistId
-import com.ash.music.app.model.UserId
-import com.ash.music.app.model.UserPlaylist
-import com.ash.music.app.model.UserTrack
+import com.ash.music.app.model.*
 import com.ash.music.app.user.library.persistence.UserPlaylistPersistence
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.*
@@ -27,8 +24,18 @@ class UserPlaylistEndpoints(
         TODO()
     }
 
-    @GetMapping("/{playlistId}/tracks")
+    @GetMapping("/{playlistId}/track")
     fun getPlaylistTracks(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId): List<UserTrack> {
+        TODO()
+    }
+
+    @PutMapping("/{playlistId}/track")
+    fun addPlaylistTrack(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId, @PathVariable trackId: TrackId) {
+        TODO()
+    }
+
+    @PutMapping("/{playlistId}/track")
+    fun removePlaylistTrack(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId, @PathVariable trackId: TrackId) {
         TODO()
     }
 }
