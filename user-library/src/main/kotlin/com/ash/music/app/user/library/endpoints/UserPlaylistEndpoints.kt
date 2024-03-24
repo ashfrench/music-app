@@ -1,7 +1,9 @@
 package com.ash.music.app.user.library.endpoints
 
+import com.ash.music.app.model.PlaylistId
 import com.ash.music.app.model.UserId
 import com.ash.music.app.model.UserPlaylist
+import com.ash.music.app.model.UserTrack
 import com.ash.music.app.user.library.persistence.UserPlaylistPersistence
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.*
@@ -20,4 +22,13 @@ class UserPlaylistEndpoints(
         userPlaylistPersistence.createPlaylist(userId, playlist)
     }
 
+    @PutMapping("/{playlistId}/update")
+    fun updatePlaylist(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId, @RequestBody playlist: UserPlaylist) {
+        TODO()
+    }
+
+    @GetMapping("/{playlistId}/tracks")
+    fun getPlaylistTracks(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId): List<UserTrack> {
+        TODO()
+    }
 }
