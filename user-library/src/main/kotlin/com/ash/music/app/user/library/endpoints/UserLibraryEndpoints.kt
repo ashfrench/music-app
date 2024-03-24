@@ -3,6 +3,7 @@ package com.ash.music.app.user.library.endpoints
 import com.ash.music.app.model.*
 import com.ash.music.app.user.library.persistence.UserAlbumPersistence
 import com.ash.music.app.user.library.persistence.UserArtistPersistence
+import com.ash.music.app.user.library.persistence.UserPlaylistPersistence
 import com.ash.music.app.user.library.persistence.UserTrackPersistence
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.GetMapping
@@ -15,7 +16,8 @@ import org.springframework.web.bind.annotation.RestController
 class UserLibraryEndpoints(
     private val userAlbumPersistence: UserAlbumPersistence,
     private val userTrackPersistence: UserTrackPersistence,
-    private val userArtistPersistence: UserArtistPersistence
+    private val userArtistPersistence: UserArtistPersistence,
+    private val userPlaylistPersistence: UserPlaylistPersistence
 ) {
 
     private val logger = LoggerFactory.getLogger(UserLibraryEndpoints::class.java)
@@ -51,12 +53,12 @@ class UserLibraryEndpoints(
     }
 
     @GetMapping("/playlist")
-    fun getPlaylists(@PathVariable userId: UserId): List<Playlist> {
-        TODO()
+    fun getPlaylists(@PathVariable userId: UserId): List<UserPlaylist> {
+        return userPlaylistPersistence.getPlaylists(userId)
     }
 
     @GetMapping("/playlist/{playlistId}")
-    fun getPlaylist(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId): Playlist {
-        TODO()
+    fun getPlaylist(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId): UserPlaylist {
+        return userPlaylistPersistence.getPlaylist(userId, playlistId)
     }
 }
