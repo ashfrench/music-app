@@ -29,13 +29,18 @@ class UserPlaylistEndpoints(
         TODO()
     }
 
-    @PutMapping("/{playlistId}/track")
+    @PutMapping("/{playlistId}/track/{trackId}")
     fun addPlaylistTrack(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId, @PathVariable trackId: TrackId) {
         TODO()
     }
 
-    @PutMapping("/{playlistId}/track")
+    @DeleteMapping("/{playlistId}/track/{trackId}")
     fun removePlaylistTrack(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId, @PathVariable trackId: TrackId) {
+        TODO()
+    }
+
+    @PutMapping("/{playlistId}/track")
+    fun updatePlaylistTracks(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId, @RequestBody tracks: List<UserTrack>) {
         TODO()
     }
 }
