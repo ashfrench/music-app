@@ -21,26 +21,31 @@ class UserPlaylistEndpoints(
 
     @PutMapping("/{playlistId}/update")
     fun updatePlaylist(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId, @RequestBody playlist: UserPlaylist) {
-        TODO()
+        logger.info("User: [$userId] Updated Playlist [$playlistId]")
+        userPlaylistPersistence.updatePlaylist(userId, playlistId, playlist)
     }
 
     @GetMapping("/{playlistId}/track")
     fun getPlaylistTracks(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId): List<UserTrack> {
-        TODO()
+        logger.info("User: [$userId] Requested Playlist [$playlistId]")
+        return userPlaylistPersistence.getPlaylistTracks(userId, playlistId)
     }
 
     @PutMapping("/{playlistId}/track/{trackId}")
     fun addPlaylistTrack(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId, @PathVariable trackId: TrackId) {
-        TODO()
+        logger.info("User: [$userId] Updated Playlist [$playlistId] adding Track [$trackId]")
+        userPlaylistPersistence.addPlaylistTrack(userId, playlistId, trackId)
     }
 
     @DeleteMapping("/{playlistId}/track/{trackId}")
     fun removePlaylistTrack(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId, @PathVariable trackId: TrackId) {
-        TODO()
+        logger.info("User: [$userId] Updated Playlist [$playlistId] removing Track [$trackId]")
+        userPlaylistPersistence.addPlaylistTrack(userId, playlistId, trackId)
     }
 
     @PutMapping("/{playlistId}/track")
-    fun updatePlaylistTracks(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId, @RequestBody tracks: List<UserTrack>) {
-        TODO()
+    fun updatePlaylistTracks(@PathVariable userId: UserId, @PathVariable playlistId: PlaylistId, @RequestBody tracks: List<TrackId>) {
+        logger.info("User: [$userId] Updated Playlist [$playlistId] adding Tracks [$tracks]")
+        userPlaylistPersistence.updatePlaylistTracks(userId, playlistId, tracks)
     }
 }
