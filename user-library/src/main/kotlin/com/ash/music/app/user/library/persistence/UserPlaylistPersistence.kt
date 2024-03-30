@@ -3,7 +3,7 @@ package com.ash.music.app.user.library.persistence
 import com.ash.music.app.model.*
 
 class UserPlaylistPersistence {
-    fun createPlaylist(userId: UserId, playlist: UserPlaylist) {
+    fun createPlaylist(userId: UserId, playlist: UserPlaylist): PlaylistId {
         TODO("Not yet implemented")
     }
 

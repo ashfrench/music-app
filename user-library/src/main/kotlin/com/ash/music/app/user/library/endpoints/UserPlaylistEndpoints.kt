@@ -14,9 +14,9 @@ class UserPlaylistEndpoints(
     private val logger = LoggerFactory.getLogger(UserPlaylistEndpoints::class.java)
 
     @PostMapping("/create")
-    fun createPlaylist(@PathVariable userId: UserId, @RequestBody playlist: UserPlaylist) {
+    fun createPlaylist(@PathVariable userId: UserId, @RequestBody playlist: UserPlaylist): PlaylistId {
         logger.info("User: [$userId] Created Playlist [$playlist]")
-        userPlaylistPersistence.createPlaylist(userId, playlist)
+        return userPlaylistPersistence.createPlaylist(userId, playlist)
     }
 
     @PutMapping("/{playlistId}/update")
