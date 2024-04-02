@@ -1,5 +1,6 @@
 package com.ash.music.app.global.library.endpoints
 
+import com.ash.music.app.global.library.persistence.GlobalLibraryPersistence
 import com.ash.music.app.model.IAlbum
 import com.ash.music.app.model.IArtist
 import com.ash.music.app.model.ITrack
@@ -12,7 +13,9 @@ import java.util.*
 
 @RestController
 @RequestMapping("library")
-class GlobalLibraryEndpoints {
+class GlobalLibraryEndpoints(
+    private val persistence: GlobalLibraryPersistence
+) {
 
     @GetMapping("/artist")
     fun getArtists(): List<IArtist> {
