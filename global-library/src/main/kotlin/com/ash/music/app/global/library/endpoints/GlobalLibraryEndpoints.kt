@@ -1,10 +1,7 @@
 package com.ash.music.app.global.library.endpoints
 
 import com.ash.music.app.global.library.persistence.GlobalLibraryPersistence
-import com.ash.music.app.model.IAlbum
-import com.ash.music.app.model.IArtist
-import com.ash.music.app.model.ITrack
-import com.ash.music.app.model.Playlist
+import com.ash.music.app.model.*
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -23,7 +20,7 @@ class GlobalLibraryEndpoints(
     }
 
     @GetMapping("/artist/{artistId}")
-    fun getArtist(@PathVariable artistId: UUID): IArtist {
+    fun getArtist(@PathVariable artistId: ArtistId): IArtist {
         TODO()
     }
 
@@ -33,7 +30,7 @@ class GlobalLibraryEndpoints(
     }
 
     @GetMapping("/track/{trackId}")
-    fun getTrack(@PathVariable trackId: UUID): ITrack {
+    fun getTrack(@PathVariable trackId: TrackId): ITrack {
         TODO()
     }
 
@@ -43,7 +40,7 @@ class GlobalLibraryEndpoints(
     }
 
     @GetMapping("/album/{albumId}")
-    fun getAlbum(@PathVariable albumId: UUID): IAlbum {
+    fun getAlbum(@PathVariable albumId: AlbumId): IAlbum {
         TODO()
     }
 
@@ -53,7 +50,12 @@ class GlobalLibraryEndpoints(
     }
 
     @GetMapping("/playlist/{playlistId}")
-    fun getPlaylist(@PathVariable playlistId: UUID): Playlist {
+    fun getPlaylist(@PathVariable playlistId: PlaylistId): Playlist {
+        TODO()
+    }
+
+    @GetMapping("/playlist/{playlistId}/track")
+    fun getPlaylistTracks(@PathVariable playlistId: PlaylistId): TrackList {
         TODO()
     }
 }
