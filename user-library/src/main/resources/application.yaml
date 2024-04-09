@@ -1,3 +1,23 @@
 spring:
   application:
     name: User-Library-Service
+
+#  datasource:
+#    url: r2dbc:h2:mem:testdb
+#    driverClassName: org.h2.Driver
+#    username: sa
+#    password:
+
+  r2dbc:
+    url: r2dbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+
+  liquibase:
+    enabled: true
+    change-log: classpath:changelog.yaml
