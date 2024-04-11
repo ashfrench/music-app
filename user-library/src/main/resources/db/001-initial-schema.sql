@@ -1,6 +1,6 @@
 CREATE TABLE customer (
-    customer_id varchar PRIMARY KEY,
-    name varchar
-)
+    customer_id varchar(36) PRIMARY KEY,
+    name varchar (255)
+);
 
-insert into customer ("DEADBEEF-DEAD-BEEF-DEAD-BEEFDEADBEEF", "ASH")
+INSERT INTO customer VALUES ('DEADBEEF-DEAD-BEEF-DEAD-BEEFDEADBEEF', 'ASH');

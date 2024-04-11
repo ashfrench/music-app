@@ -18,7 +18,7 @@ internal class R2DBCConfiguration : AbstractR2dbcConfiguration() {
     override fun connectionFactory(): H2ConnectionFactory {
         return H2ConnectionFactory(
             H2ConnectionConfiguration.builder()
-                .url("mem:testdb;DB_CLOSE_DELAY=-1;")
+                .url("mem:test;DB_CLOSE_DELAY=-1;")
                 .username("sa")
                 .build()
         )
