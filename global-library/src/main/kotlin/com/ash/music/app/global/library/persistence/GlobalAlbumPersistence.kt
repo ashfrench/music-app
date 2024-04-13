@@ -10,6 +10,6 @@ import java.time.Duration
 import java.util.*
 
 @Component
-class GlobalLibraryPersistence(
+class GlobalAlbumPersistence(
     private val client: DatabaseClient
 )
