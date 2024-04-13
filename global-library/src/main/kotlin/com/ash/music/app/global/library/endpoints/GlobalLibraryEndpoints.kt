@@ -16,21 +16,6 @@ class GlobalLibraryEndpoints(
     private val persistence: GlobalLibraryPersistence
 ) {
 
-    @GetMapping("/artist")
-    fun getArtists(): Flux<IArtist> {
-        return persistence.getArtists()
-    }
-
-    @GetMapping("/artist/{artistId}")
-    fun getArtist(@PathVariable artistId: ArtistId): Mono<IArtist> {
-        return persistence.getArtist(artistId)
-    }
-
-    @GetMapping("/artist/{artistId}/track")
-    fun getArtistTracks(@PathVariable artistId: ArtistId): Flux<ITrack> {
-        return persistence.getArtistTracks(artistId)
-    }
-
     @GetMapping("/track")
     fun getTracks(): List<ITrack> {
         TODO()
