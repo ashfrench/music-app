@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 import java.util.*
 
 @RestController
@@ -15,13 +17,18 @@ class GlobalLibraryEndpoints(
 ) {
 
     @GetMapping("/artist")
-    fun getArtists(): List<IArtist> {
-        TODO()
+    fun getArtists(): Flux<IArtist> {
+        return persistence.getArtists()
     }
 
     @GetMapping("/artist/{artistId}")
-    fun getArtist(@PathVariable artistId: ArtistId): IArtist {
-        TODO()
+    fun getArtist(@PathVariable artistId: ArtistId): Mono<IArtist> {
+        return persistence.getArtist(artistId)
+    }
+
+    @GetMapping("/artist/{artistId}/track")
+    fun getArtistTracks(@PathVariable artistId: ArtistId): Flux<ITrack> {
+        return persistence.getArtistTracks(artistId)
     }
 
     @GetMapping("/track")
