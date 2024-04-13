@@ -12,15 +12,13 @@ class GlobalArtistPersistence(
     private val client: DatabaseClient
 ) {
     fun getArtists(): Flux<IArtist> {
-        val flux: Flux<IArtist> =  client.sql("SELECT artist_id, artist_name FROM artist")
+        return  client.sql("SELECT artist_id, artist_name FROM artist")
             .map { row ->
                 SoloArtist(
                     UUID.fromString(row["artist_id"]!!.toString()),
                     row["artist_name"]!!.toString()
                 ) as IArtist
             }.all()
-
-        return flux
     }
 
     suspend fun getArtist(artistId: ArtistId): IArtist? {

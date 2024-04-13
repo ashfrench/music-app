@@ -14,17 +14,17 @@ class GlobalAlbumEndpoints(
 ) {
     @GetMapping
     fun getAlbums(): List<IAlbum> {
-        TODO()
+        return persistence.getAlbums()
     }
 
     @GetMapping("/{albumId}")
     fun getAlbum(@PathVariable albumId: AlbumId): IAlbum {
-        TODO()
+        return persistence.getAlbum(albumId)
     }
 
     @GetMapping("/{albumId}/track")
     fun getAlbumTracks(@PathVariable albumId: AlbumId): TrackList {
-        TODO()
+        return persistence.getAlbumTracks(albumId)
     }
 
 }

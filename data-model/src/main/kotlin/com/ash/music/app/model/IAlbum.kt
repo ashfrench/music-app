@@ -2,6 +2,7 @@ package com.ash.music.app.model
 
 interface IAlbum {
     val albumID: AlbumId
+    val albumName: String
     val artistId: ArtistId
     val trackList: TrackList
     val albumDetails: IAlbumDetails
@@ -9,6 +10,7 @@ interface IAlbum {
 
 data class Album(
     override val albumID: AlbumId,
+    override val albumName: String,
     override val artistId: ArtistId,
     override val trackList: TrackList
 ): IAlbum {
@@ -17,6 +19,7 @@ data class Album(
 
 data class UserAlbum(
     override val albumID: AlbumId,
+    override val albumName: String,
     override val artistId: ArtistId,
     override val trackList: TrackList,
     val like: Boolean,
