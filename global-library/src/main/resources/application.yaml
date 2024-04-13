@@ -8,4 +8,4 @@ spring:
 
   liquibase:
     enabled: true
-    change-log: classpath:changelog.yaml
+    change-log: classpath:/db/changelog.yaml
