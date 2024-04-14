@@ -25,7 +25,7 @@ class GlobalAlbumEndpoints(
     }
 
     @GetMapping("/{albumId}/track")
-    fun getAlbumTracks(@PathVariable albumId: AlbumId): Flux<ITrack> {
+    fun getAlbumTracks(@PathVariable albumId: AlbumId): Flux<AlbumTrack> {
         return persistence.getAlbumTracks(albumId)
     }
 
