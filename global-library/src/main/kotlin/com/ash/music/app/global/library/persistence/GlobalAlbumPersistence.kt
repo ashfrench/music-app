@@ -39,13 +39,14 @@ class GlobalAlbumPersistence(
             }.awaitOneOrNull()
     }
 
-    fun getAlbumTracks(albumId: AlbumId): Flux<ITrack> {
+    fun getAlbumTracks(albumId: AlbumId): Flux<AlbumTrack> {
         return client.sql("SELECT t.track_id, t.track_name, t.artist_id, at.album_id FROM track t, album_tracks at WHERE t.album_id = :albumID AND at.track_id = t.track_id")
             .bind("albumID", albumId)
-            .map<ITrack> { row ->
-                Track(
+            .map { row ->
+                AlbumTrack(
                     UUID.fromString(row["track_id"]!!.toString()),
                     row["track_name"]!!.toString(),
+                    row["track_number"]!! as Int,
                     UUID.fromString(row["artist_id"]!!.toString()),
                     UUID.fromString(row["album_id"]!!.toString()),
                 )
