@@ -39,8 +39,7 @@ class GlobalArtistPersistence(
                 Track(
                     UUID.fromString(row["track_id"]!!.toString()),
                     row["track_name"]!!.toString(),
-                    UUID.fromString(row["artist_id"]!!.toString()),
-                    UUID.fromString(row["album_id"]!!.toString()),
+                    UUID.fromString(row["artist_id"]!!.toString())
                 )
             }
             .all()
