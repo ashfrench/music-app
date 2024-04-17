@@ -9,7 +9,7 @@ typealias UserId = UUID
 typealias AlbumId = UUID
 typealias TrackList = List<ITrack>
 
-fun newArtistId(): UUID = UUID.randomUUID()
-fun newAlbumId(): UUID = UUID.randomUUID()
-fun newPlaylistId(): UUID = UUID.randomUUID()
-fun newTrackId(): UUID = UUID.randomUUID()
+fun newArtistId(): ArtistId = UUID.randomUUID()
+fun newAlbumId(): AlbumId = UUID.randomUUID()
+fun newPlaylistId(): PlaylistId = UUID.randomUUID()
+fun newTrackId(): TrackId = UUID.randomUUID()
