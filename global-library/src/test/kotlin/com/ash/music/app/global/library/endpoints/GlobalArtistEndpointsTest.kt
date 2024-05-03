@@ -25,4 +25,15 @@ class GlobalArtistEndpointsTest(@Autowired val restTemplate: TestRestTemplate) {
 
     }
 
+    @Test
+    fun `get artist`() {
+        val responseEntity = restTemplate.getForEntity<String>("/library/artist/deadbeef-dead-beef-dead-beefdeadbeef")
+
+        assertThat(responseEntity.statusCode).isEqualTo(HttpStatus.OK)
+        assertThat(responseEntity.hasBody()).isTrue()
+        assertNotNull(responseEntity.body)
+        assertEquals("{\"artistId\":\"deadbeef-dead-beef-dead-beefdeadbeef\",\"artistName\":\"Ash Is Awesome\",\"bio\":{}}", responseEntity.body)
+
+    }
+
 }
