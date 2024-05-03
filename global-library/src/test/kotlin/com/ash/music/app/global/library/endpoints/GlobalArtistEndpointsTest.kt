@@ -44,6 +44,12 @@ class GlobalArtistEndpointsTest(@Autowired val restTemplate: TestRestTemplate) {
     }
 
     @Test
+    fun `get artist invalid uuid`() {
+        val responseEntity = restTemplate.getForEntity<String>("/library/artist/1235")
+        assertThat(responseEntity.statusCode).isEqualTo(HttpStatus.BAD_REQUEST)
+    }
+
+    @Test
     fun `get artist tracks`() {
 
         val x = UUID.fromString("11111111-1111-1111-1111-11111111111")
