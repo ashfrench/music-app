@@ -38,6 +38,12 @@ class GlobalArtistEndpointsTest(@Autowired val restTemplate: TestRestTemplate) {
     }
 
     @Test
+    fun `get artist not found`() {
+        val responseEntity = restTemplate.getForEntity<String>("/library/artist/deadbeef-dead-beef-dead-beefdeadbeeb")
+        assertThat(responseEntity.statusCode).isEqualTo(HttpStatus.NOT_FOUND)
+    }
+
+    @Test
     fun `get artist tracks`() {
 
         val x = UUID.fromString("11111111-1111-1111-1111-11111111111")
