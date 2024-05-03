@@ -39,9 +39,9 @@ class GlobalArtistPersistence(
             .bind("artID", artistId)
             .map<ITrack> { row ->
                 Track(
-                    UUID.fromString(row["track_id"]!!.toString()),
+                    UUID.fromString(row["track_id"]!!.toString().trim()),
                     row["track_name"]!!.toString(),
-                    UUID.fromString(row["artist_id"]!!.toString())
+                    UUID.fromString(row["artist_id"]!!.toString().trim())
                 )
             }
             .all()
