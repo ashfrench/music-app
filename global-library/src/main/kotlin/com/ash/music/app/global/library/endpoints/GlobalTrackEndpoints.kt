@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Flux
+import java.time.Duration
 
 @RestController
 @RequestMapping("library/track")
@@ -22,8 +23,8 @@ class GlobalTrackEndpoints(
     }
 
     @GetMapping("/{trackId}")
-    suspend fun getTrack(@PathVariable trackId: TrackId): Track {
-        return persistence.getTrack(trackId) ?: throw ResourceNotFoundException()
+    fun getTrack(@PathVariable trackId: TrackId): Track {
+        return persistence.getTrack(trackId).block(Duration.ofSeconds(1)) ?: throw ResourceNotFoundException()
     }
 
 }

@@ -5,6 +5,7 @@ import org.springframework.r2dbc.core.DatabaseClient
 import org.springframework.r2dbc.core.awaitOneOrNull
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 import java.util.*
 
 @Component
@@ -26,7 +27,7 @@ class GlobalTrackPersistence(
             .all()
     }
 
-    suspend fun getTrack(trackId: TrackId): Track? {
+    fun getTrack(trackId: TrackId): Mono<Track> {
         return client.sql(TRACK_SQL)
             .bind("trackId", trackId)
             .map { row ->
@@ -36,7 +37,7 @@ class GlobalTrackPersistence(
                     UUID.fromString(row["artist_id"]!!.toString())
                 )
             }
-            .awaitOneOrNull()
+            .first()
     }
 }
 

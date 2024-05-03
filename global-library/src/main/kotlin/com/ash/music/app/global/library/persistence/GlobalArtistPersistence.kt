@@ -5,6 +5,7 @@ import org.springframework.r2dbc.core.DatabaseClient
 import org.springframework.r2dbc.core.awaitOneOrNull
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 import java.time.Duration
 import java.util.UUID
 
@@ -22,16 +23,16 @@ class GlobalArtistPersistence(
             }.all()
     }
 
-    fun getArtist(artistId: ArtistId): IArtist? {
+    fun getArtist(artistId: ArtistId): Mono<IArtist> {
         return client.sql("SELECT artist_id, artist_name FROM artist WHERE artist_id = :artID")
             .bind("artID", artistId)
             .map { row ->
                 SoloArtist(
                     UUID.fromString(row["artist_id"]!!.toString()),
                     row["artist_name"]!!.toString()
-                )
+                ) as IArtist
             }
-            .first().block(Duration.ofSeconds(1))
+            .first()
     }
 
     fun getArtistTracks(artistId: ArtistId): Flux<ITrack> {

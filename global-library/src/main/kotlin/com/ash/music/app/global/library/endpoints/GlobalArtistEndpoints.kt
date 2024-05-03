@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Flux
+import java.time.Duration
 
 @RestController
 @RequestMapping("library/artist")
@@ -23,8 +24,8 @@ class GlobalArtistEndpoints(
     }
 
     @GetMapping("/{artistId}")
-    suspend fun getArtist(@PathVariable artistId: ArtistId): IArtist {
-        return persistence.getArtist(artistId) ?: throw ResourceNotFoundException()
+    fun getArtist(@PathVariable artistId: ArtistId): IArtist {
+        return persistence.getArtist(artistId).block(Duration.ofSeconds(1)) ?: throw ResourceNotFoundException()
     }
 
     @GetMapping("/{artistId}/track")

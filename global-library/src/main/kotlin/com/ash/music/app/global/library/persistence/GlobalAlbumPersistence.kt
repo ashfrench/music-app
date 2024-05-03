@@ -26,7 +26,7 @@ class GlobalAlbumPersistence(
             }.all()
     }
 
-    suspend fun getAlbum(albumId: AlbumId): Album? {
+    fun getAlbum(albumId: AlbumId): Mono<Album> {
         return client.sql("SELECT album_id, album_name, artist_id FROM album WHERE album_id = :albumID")
             .bind("albumID", albumId)
             .map { row ->
@@ -36,7 +36,7 @@ class GlobalAlbumPersistence(
                     UUID.fromString(row["artist_id"]!!.toString()),
                     emptyList()
                 )
-            }.awaitOneOrNull()
+            }.first()
     }
 
     fun getAlbumTracks(albumId: AlbumId): Flux<AlbumTrack> {
