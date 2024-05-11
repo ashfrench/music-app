@@ -22,6 +22,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactive")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
+    testImplementation("io.projectreactor:reactor-test:3.6.5")
+
 
     implementation("io.r2dbc:r2dbc-h2")
     implementation("org.liquibase:liquibase-core:4.27.0")
