@@ -19,7 +19,7 @@ class GlobalAlbumEndpointsTest(@Autowired val restTemplate: TestRestTemplate) {
         Assertions.assertThat(responseEntity.statusCode).isEqualTo(HttpStatus.OK)
         Assertions.assertThat(responseEntity.hasBody()).isTrue()
         assertNotNull(responseEntity.body)
-        assertEquals("[{\"albumID\":\"deadcafe-dead-cafe-dead-cafedeadcafe\",\"albumName\":\"Amazing Album\",\"artistId\":\"deadbeef-dead-beef-dead-beefdeadbeef\",\"trackList\":[],\"albumDetails\":{}}]", responseEntity.body)
+        assertEquals("""[{"albumID":"deadcafe-dead-cafe-dead-cafedeadcafe","albumName":"Amazing Album","artistId":"deadbeef-dead-beef-dead-beefdeadbeef","trackList":[],"albumDetails":{}}]""", responseEntity.body)
     }
 
 }
