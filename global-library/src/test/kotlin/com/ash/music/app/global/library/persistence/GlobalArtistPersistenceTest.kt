@@ -39,7 +39,8 @@ class GlobalArtistPersistenceTest(@Autowired val persistence: GlobalArtistPersis
         val artistMono = persistence.getArtist(UUID.fromString("deadbeef-dead-beef-dead-beefdeadbeed"))
 
         StepVerifier.create(artistMono)
-            .expectTimeout(Duration.ofSeconds(1))
+            .expectNextCount(0)
+            .verifyComplete()
     }
 
     @Test
@@ -57,5 +58,15 @@ class GlobalArtistPersistenceTest(@Autowired val persistence: GlobalArtistPersis
             .expectComplete()
             .verifyThenAssertThat().hasNotDroppedErrors()
     }
-    
+
+    @Test
+    fun `get artist tracks not found`() {
+        val artistID = UUID.fromString("deadbeef-dead-beef-dead-beefdeadbeed")
+        val artistFlux = persistence.getArtistTracks(artistID)
+
+        StepVerifier.create(artistFlux)
+            .expectNextCount(0)
+            .verifyComplete()
+    }
+
 }
