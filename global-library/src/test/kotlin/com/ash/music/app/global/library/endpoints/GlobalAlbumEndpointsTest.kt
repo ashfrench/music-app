@@ -1,7 +1,8 @@
 package com.ash.music.app.global.library.endpoints
 
-import org.assertj.core.api.Assertions
-import org.junit.jupiter.api.Assertions.*
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -16,10 +17,20 @@ class GlobalAlbumEndpointsTest(@Autowired val restTemplate: TestRestTemplate) {
     fun `get albums`() {
         val responseEntity = restTemplate.getForEntity<String>("/library/album")
 
-        Assertions.assertThat(responseEntity.statusCode).isEqualTo(HttpStatus.OK)
-        Assertions.assertThat(responseEntity.hasBody()).isTrue()
+        assertThat(responseEntity.statusCode).isEqualTo(HttpStatus.OK)
+        assertThat(responseEntity.hasBody()).isTrue()
         assertNotNull(responseEntity.body)
         assertEquals("""[{"albumID":"deadcafe-dead-cafe-dead-cafedeadcafe","albumName":"Amazing Album","artistId":"deadbeef-dead-beef-dead-beefdeadbeef","trackList":[],"albumDetails":{}}]""", responseEntity.body)
     }
 
+    @Test
+    fun `get album`() {
+        val responseEntity = restTemplate.getForEntity<String>("/library/album/deadcafe-dead-cafe-dead-cafedeadcafe")
+
+        assertThat(responseEntity.statusCode).isEqualTo(HttpStatus.OK)
+        assertThat(responseEntity.hasBody()).isTrue()
+        assertNotNull(responseEntity.body)
+        assertEquals("""{"albumID":"deadcafe-dead-cafe-dead-cafedeadcafe","albumName":"Amazing Album","artistId":"deadbeef-dead-beef-dead-beefdeadbeef","trackList":[],"albumDetails":{}}""", responseEntity.body)
+    }
+    
 }
