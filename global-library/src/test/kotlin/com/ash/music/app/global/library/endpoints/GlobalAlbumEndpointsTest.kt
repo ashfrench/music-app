@@ -32,5 +32,11 @@ class GlobalAlbumEndpointsTest(@Autowired val restTemplate: TestRestTemplate) {
         assertNotNull(responseEntity.body)
         assertEquals("""{"albumID":"deadcafe-dead-cafe-dead-cafedeadcafe","albumName":"Amazing Album","artistId":"deadbeef-dead-beef-dead-beefdeadbeef","trackList":[],"albumDetails":{}}""", responseEntity.body)
     }
-    
+
+    @Test
+    fun `get album not found`() {
+        val responseEntity = restTemplate.getForEntity<String>("/library/album/deadcafe-dead-cafe-dead-cafedeadaaaa")
+        assertThat(responseEntity.statusCode).isEqualTo(HttpStatus.NOT_FOUND)
+    }
+
 }
