@@ -38,9 +38,10 @@ class GlobalAlbumPersistence(
             }.first()
     }
 
-    fun getAlbumTracks(albumId: AlbumId): Flux<AlbumTrack> {
+    fun getAlbumTracks(albumId: AlbumId): Mono<List<AlbumTrack>> {
         return client.sql("SELECT t.track_id, t.track_name, t.artist_id, at.album_id, at.track_number FROM track t, album_tracks at WHERE at.album_id = :albumID AND at.track_id = t.track_id")
             .bind("albumID", albumId)
+
             .map { row ->
                 AlbumTrack(
                     UUID.fromString(row["track_id"]!!.toString().trim()),
@@ -51,5 +52,6 @@ class GlobalAlbumPersistence(
                 )
             }
             .all()
+            .collectList()
     }
 }
