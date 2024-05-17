@@ -47,13 +47,18 @@ class GlobalArtistPersistenceTest(@Autowired val persistence: GlobalArtistPersis
         val artistID = UUID.fromString("deadbeef-dead-beef-dead-beefdeadbeef")
         val artistFlux = persistence.getArtistTracks(artistID)
 
-        StepVerifier.create(artistFlux)
-            .expectNext(Track(UUID.fromString("11111111-1111-1111-1111-011111111111"), "My Song", artistID))
-            .expectNext(Track(UUID.fromString("22222222-2222-2222-2222-022222222222"), "I did a music", artistID))
-            .expectNext(Track(UUID.fromString("33333333-3333-3333-3333-033333333333"), "Notes Happened", artistID))
-            .expectNext(Track(UUID.fromString("44444444-4444-4444-4444-044444444444"), "Boom Another Song", artistID))
-            .expectNext(Track(UUID.fromString("55555555-5555-5555-5555-055555555555"), "Loud Noises", artistID))
 
+
+        StepVerifier.create(artistFlux)
+            .expectNext(
+                listOf(
+                    Track(UUID.fromString("11111111-1111-1111-1111-011111111111"), "My Song", artistID),
+                    Track(UUID.fromString("22222222-2222-2222-2222-022222222222"), "I did a music", artistID),
+                    Track(UUID.fromString("33333333-3333-3333-3333-033333333333"), "Notes Happened", artistID),
+                    Track(UUID.fromString("44444444-4444-4444-4444-044444444444"), "Boom Another Song", artistID),
+                    Track(UUID.fromString("55555555-5555-5555-5555-055555555555"), "Loud Noises", artistID),
+                )
+            )
             .expectComplete()
             .verifyThenAssertThat().hasNotDroppedErrors()
     }
@@ -65,7 +70,7 @@ class GlobalArtistPersistenceTest(@Autowired val persistence: GlobalArtistPersis
 
         StepVerifier.create(artistFlux)
             .expectNextCount(0)
-            .verifyComplete()
+            .expectComplete()
     }
 
 }

@@ -2,12 +2,10 @@ package com.ash.music.app.global.library.persistence
 
 import com.ash.music.app.model.*
 import org.springframework.r2dbc.core.DatabaseClient
-import org.springframework.r2dbc.core.awaitOneOrNull
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-import java.time.Duration
-import java.util.UUID
+import java.util.*
 
 @Component
 class GlobalArtistPersistence(
@@ -35,7 +33,7 @@ class GlobalArtistPersistence(
             .first()
     }
 
-    fun getArtistTracks(artistId: ArtistId): Flux<ITrack> {
+    fun getArtistTracks(artistId: ArtistId): Mono<List<ITrack>> {
         return client.sql("SELECT t.track_id, t.track_name, t.artist_id, at.album_id FROM track t, album_tracks at WHERE t.artist_id = :artID AND at.track_id = t.track_id")
             .bind("artID", artistId)
             .map<ITrack> { row ->
@@ -46,5 +44,6 @@ class GlobalArtistPersistence(
                 )
             }
             .all()
+            .collectList()
     }
 }

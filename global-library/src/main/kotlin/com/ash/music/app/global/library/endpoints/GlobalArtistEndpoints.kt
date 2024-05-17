@@ -29,8 +29,10 @@ class GlobalArtistEndpoints(
     }
 
     @GetMapping("/{artistId}/track")
-    fun getArtistTracks(@PathVariable artistId: ArtistId): Flux<ITrack> {
+    fun getArtistTracks(@PathVariable artistId: ArtistId): List<ITrack> {
         return persistence.getArtistTracks(artistId)
+            .blockOptional(Duration.ofSeconds(1)).map { it.ifEmpty { null } }
+            .orElseThrow { ResourceNotFoundException() }!!
     }
 
 }

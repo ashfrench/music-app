@@ -58,4 +58,10 @@ class GlobalArtistEndpointsTest(@Autowired val restTemplate: TestRestTemplate) {
 
     }
 
+    @Test
+    fun `get artist tracks not found`() {
+        val responseEntity = restTemplate.getForEntity<String>("/library/artist/deadbeef-dead-beef-dead-beefdeadeeee/track")
+        assertThat(responseEntity.statusCode).isEqualTo(HttpStatus.NOT_FOUND)
+    }
+
 }
